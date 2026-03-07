@@ -2,6 +2,45 @@
   "defaultLayoutId": "print_a4_portrait",
   "categories": [
     {
+      "id": "sticker",
+      "name": "Sticker",
+      "layouts": [
+        {
+          "id": "sticker_small",
+          "name": "Travel Sticker (S)",
+          "description": "5×7 cm shield sticker for laptops and phones.",
+          "width": 5,
+          "height": 7,
+          "unit": "cm",
+          "posterWidthCm": 5,
+          "posterHeightCm": 7,
+          "exportShape": "shield"
+        },
+        {
+          "id": "sticker_medium",
+          "name": "Travel Sticker (M)",
+          "description": "7×10 cm shield sticker for water bottles and notebooks.",
+          "width": 7,
+          "height": 10,
+          "unit": "cm",
+          "posterWidthCm": 7,
+          "posterHeightCm": 10,
+          "exportShape": "shield"
+        },
+        {
+          "id": "sticker_large",
+          "name": "Travel Sticker (L)",
+          "description": "10×14 cm shield sticker for luggage and guitar cases.",
+          "width": 10,
+          "height": 14,
+          "unit": "cm",
+          "posterWidthCm": 10,
+          "posterHeightCm": 14,
+          "exportShape": "shield"
+        }
+      ]
+    },
+    {
       "id": "print",
       "name": "Print",
       "layouts": [

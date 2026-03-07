@@ -1,3 +1,5 @@
+import type { ExportShape } from "@/features/poster/domain/types";
+
 export interface Layout {
   id: string;
   name: string;
@@ -10,6 +12,7 @@ export interface Layout {
   symbol: string;
   categoryId: string;
   categoryName: string;
+  exportShape?: ExportShape;
 }
 
 export interface LayoutGroup {

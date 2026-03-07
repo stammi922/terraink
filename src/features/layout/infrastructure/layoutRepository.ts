@@ -54,6 +54,13 @@ function createSymbolFromRatio(width: number, height: number): string {
   return `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 40'><rect x='2' y='2' width='60' height='36' rx='5' fill='none' stroke='#9CC3DA' stroke-width='2'/><rect x='${roundedX}' y='${roundedY}' width='${roundedWidth}' height='${roundedHeight}' rx='3' fill='#4B91B7'/></svg>`;
 }
 
+function normalizeExportShape(value: unknown): "rectangle" | "shield" | undefined {
+  const shape = String(value ?? "").trim().toLowerCase();
+  if (shape === "shield") return "shield";
+  if (shape === "rectangle") return "rectangle";
+  return undefined;
+}
+
 function normalizeLayout(
   category: { id: string; name: string },
   layout: any,
@@ -73,6 +80,7 @@ function normalizeLayout(
   );
 
   const rawSymbol = String(layout?.symbol ?? "").trim();
+  const exportShape = normalizeExportShape(layout?.exportShape);
 
   return {
     id: String(layout?.id ?? `${category.id}_${fallbackIdSuffix}`),
@@ -86,6 +94,7 @@ function normalizeLayout(
     symbol: rawSymbol || createSymbolFromRatio(width, height),
     categoryId: category.id,
     categoryName: category.name,
+    exportShape,
   };
 }
 

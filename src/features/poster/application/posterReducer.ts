@@ -4,6 +4,7 @@ import type {
   MarkerIconDefinition,
   MarkerItem,
 } from "@/features/markers/domain/types";
+import type { ExportShape } from "@/features/poster/domain/types";
 import {
   MAX_MARKER_SIZE,
   MIN_MARKER_SIZE,
@@ -39,6 +40,7 @@ export interface PosterForm {
   includeRoadMinorLow: boolean;
   includeRoadOutline: boolean;
   showMarkers: boolean;
+  exportShape: ExportShape;
 }
 
 /* ────── App-level state ────── */
@@ -72,6 +74,7 @@ export type PosterAction =
     }
   | { type: "SET_THEME"; themeId: string }
   | { type: "SET_LAYOUT"; layoutId: string; widthCm: string; heightCm: string }
+  | { type: "SET_EXPORT_SHAPE"; shape: ExportShape }
   | { type: "SET_COLOR"; key: string; value: string }
   | { type: "RESET_COLORS" }
   | { type: "SELECT_LOCATION"; location: SearchResult }
@@ -162,6 +165,15 @@ export function posterReducer(
           layout: action.layoutId,
           width: action.widthCm,
           height: action.heightCm,
+        },
+      };
+
+    case "SET_EXPORT_SHAPE":
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          exportShape: action.shape,
         },
       };
 

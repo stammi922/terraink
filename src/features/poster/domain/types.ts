@@ -13,6 +13,9 @@ export interface CanvasSize {
   downscaleFactor: number;
 }
 
+/** Shape format for export: rectangle (default poster) or shield (travel sticker). */
+export type ExportShape = "rectangle" | "shield";
+
 /** Options passed to the export compositor (map snapshot + text overlay). */
 export interface ExportOptions {
   theme: ResolvedTheme;
@@ -32,6 +35,7 @@ export interface ExportOptions {
   markerScaleX?: number;
   markerScaleY?: number;
   markerSizeScale?: number;
+  exportShape?: ExportShape;
 }
 
 export interface Typography {

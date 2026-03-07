@@ -170,6 +170,7 @@ export function useExport() {
           markerScaleX: hasVisibleMarkers ? markerScaleX : undefined,
           markerScaleY: hasVisibleMarkers ? markerScaleY : undefined,
           markerSizeScale: hasVisibleMarkers ? markerSizeScale : undefined,
+          exportShape: form.exportShape,
         });
 
         // 3. Download

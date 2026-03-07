@@ -128,6 +128,20 @@ export function useFormHandlers() {
         widthCm: formatLayoutCm(layoutOption.widthCm),
         heightCm: formatLayoutCm(layoutOption.heightCm),
       });
+
+      // Set export shape based on layout (e.g., sticker layouts use shield shape)
+      if (layoutOption.exportShape) {
+        dispatch({
+          type: "SET_EXPORT_SHAPE",
+          shape: layoutOption.exportShape,
+        });
+      } else {
+        // Reset to rectangle for non-sticker layouts
+        dispatch({
+          type: "SET_EXPORT_SHAPE",
+          shape: "rectangle",
+        });
+      }
     },
     [dispatch],
   );

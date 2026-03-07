@@ -76,6 +76,7 @@ export const DEFAULT_FORM: PosterForm = {
   includeRoadMinorLow: true,
   includeRoadOutline: true,
   showMarkers: true,
+  exportShape: "rectangle",
 };
 
 const INITIAL_STATE: PosterState = {

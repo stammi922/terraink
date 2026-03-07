@@ -44,6 +44,33 @@
     0 8px 14px rgba(0, 0, 0, 0.42);
 }
 
+/* ── Shield/Sticker shape for preview ── */
+
+.poster-frame.shield-shape {
+  border-radius: 0;
+  border: none;
+  clip-path: polygon(
+    3% 0%, 97% 0%,
+    100% 4%, 100% 65%,
+    50% 100%,
+    0% 65%, 0% 4%
+  );
+}
+
+.poster-frame.shield-shape::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  clip-path: polygon(
+    3% 0%, 97% 0%,
+    100% 4%, 100% 65%,
+    50% 100%,
+    0% 65%, 0% 4%
+  );
+  box-shadow: inset 0 0 0 2px rgba(74, 60, 49, 0.6);
+}
+
 /* ── MapLibre container ── */
 
 .map-container {
@@ -178,6 +205,56 @@
   font-size: 0.85cqh;
   text-align: left;
   opacity: 0.55;
+}
+
+/* ── Sticker text overlay (RIMOWA-style) ── */
+
+.sticker-text-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  container-type: size;
+}
+
+.sticker-label-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 25%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 182, 193, 0.85) 0%,
+    rgba(135, 206, 235, 0.6) 100%
+  );
+}
+
+.sticker-city {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 12%;
+  margin: 0;
+  font-weight: 600;
+  font-size: 8cqh;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1.1;
+  transform: translateY(-50%);
+}
+
+.sticker-branding {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 18%;
+  margin: 0;
+  font-weight: 400;
+  font-size: 2.8cqh;
+  text-align: center;
+  opacity: 0.85;
+  transform: translateY(-50%);
 }
 
 @media (max-width: 980px) {

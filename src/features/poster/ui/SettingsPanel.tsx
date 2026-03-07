@@ -318,6 +318,22 @@ export default function SettingsPanel() {
       {!isAuxEditorActive && (
         <div className="action-row">
           <p className="export-map-label">Export Map</p>
+          <div className="export-shape-toggle">
+            <button
+              type="button"
+              className={`shape-toggle-btn${state.form.exportShape === "rectangle" ? " active" : ""}`}
+              onClick={() => dispatch({ type: "SET_EXPORT_SHAPE", shape: "rectangle" })}
+            >
+              Poster
+            </button>
+            <button
+              type="button"
+              className={`shape-toggle-btn${state.form.exportShape === "shield" ? " active" : ""}`}
+              onClick={() => dispatch({ type: "SET_EXPORT_SHAPE", shape: "shield" })}
+            >
+              Sticker
+            </button>
+          </div>
           <div className="download-row">
             {exportButtons.map((button) => (
               <button

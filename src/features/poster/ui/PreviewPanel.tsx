@@ -11,6 +11,7 @@ import MapPreview from "@/features/map/ui/MapPreview";
 import MarkerOverlay from "@/features/markers/ui/MarkerOverlay";
 import GradientFades from "./GradientFades";
 import PosterTextOverlay from "./PosterTextOverlay";
+import StickerTextOverlay from "./StickerTextOverlay";
 import {
   EditIcon,
   FinishIcon,
@@ -302,7 +303,7 @@ export default function PreviewPanel() {
       <div className="poster-viewport">
         <div
           ref={frameRef}
-          className="poster-frame"
+          className={`poster-frame${form.exportShape === "shield" ? " shield-shape" : ""}`}
           style={
             {
               "--poster-aspect": `${aspect}`,
@@ -323,7 +324,9 @@ export default function PreviewPanel() {
             onMove={handleMove}
             onMoveEnd={handleMoveEnd}
           />
-          {form.showMarkers ? <GradientFades color={effectiveTheme.ui.bg} /> : null}
+          {form.showMarkers && form.exportShape !== "shield" ? (
+            <GradientFades color={effectiveTheme.ui.bg} />
+          ) : null}
           {hasVisibleMarkers ? (
             <MarkerOverlay
               markers={state.markers}
@@ -333,18 +336,26 @@ export default function PreviewPanel() {
               onMarkerPositionChange={handleMarkerPositionChange}
             />
           ) : null}
-          <PosterTextOverlay
-            city={cityLabel}
-            country={countryLabel}
-            lat={formLat}
-            lon={formLon}
-            fontFamily={form.fontFamily}
-            textColor={effectiveTheme.ui.text}
-            landColor={effectiveTheme.map.land}
-            showPosterText={form.showPosterText}
-            includeCredits={form.includeCredits}
-            showOverlay={form.showMarkers}
-          />
+          {form.exportShape === "shield" ? (
+            <StickerTextOverlay
+              city={cityLabel}
+              fontFamily={form.fontFamily}
+              textColor={effectiveTheme.ui.text}
+            />
+          ) : (
+            <PosterTextOverlay
+              city={cityLabel}
+              country={countryLabel}
+              lat={formLat}
+              lon={formLon}
+              fontFamily={form.fontFamily}
+              textColor={effectiveTheme.ui.text}
+              landColor={effectiveTheme.map.land}
+              showPosterText={form.showPosterText}
+              includeCredits={form.includeCredits}
+              showOverlay={form.showMarkers}
+            />
+          )}
         </div>
       </div>
 

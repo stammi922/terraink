@@ -1915,6 +1915,45 @@ button.marker-picker__clear-uploaded {
   color: #7de4a6;
 }
 
+.export-shape-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.shape-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid rgba(137, 176, 200, 0.32);
+  border-radius: 8px;
+  background: rgba(14, 33, 46, 0.65);
+  color: rgba(213, 231, 245, 0.75);
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.shape-toggle-btn:hover:not(.active) {
+  background: rgba(37, 75, 105, 0.5);
+  border-color: rgba(137, 176, 200, 0.45);
+  color: rgba(213, 231, 245, 0.9);
+}
+
+.shape-toggle-btn.active {
+  background: rgba(55, 171, 203, 0.28);
+  border-color: rgba(55, 171, 203, 0.7);
+  color: #d5e7f5;
+}
+
 .action-row > button {
   width: 100%;
   padding: 8px 12px;
