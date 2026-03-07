@@ -34,29 +34,32 @@ function hexToRgba(hex: string, alpha: number): string {
 
 /**
  * Derive sticker gradient colors from theme palette.
- * Creates a harmonious gradient using the theme's background and accent colors.
+ * Creates a dark, dramatic gradient using the theme's background color (V3 style).
  */
 export function deriveGradientFromTheme(theme: ResolvedTheme): {
   top: string;
+  mid: string;
   bottom: string;
 } {
-  // Primary: use UI background, lightened
+  // Use UI background as primary color
   const bgColor = theme.ui?.bg || "#1a1a2e";
+  const { r, g, b } = hexToRgb(bgColor);
   
-  // Secondary: blend with water or land for interest
-  const accentColor = theme.map?.water || theme.map?.land || bgColor;
+  // Slightly adjust for visual depth (shift toward blue-ish tones)
+  const topR = Math.min(255, r + 10);
+  const topG = Math.min(255, g + 20);
+  const topB = Math.min(255, b + 30);
   
-  // Create a soft gradient:
-  // Top: lightened bg with high opacity
-  // Bottom: accent color fading to transparent
-  const topColor = hexToRgba(lightenColor(bgColor, 0.6), 0.92);
-  const bottomColor = hexToRgba(accentColor, 0.3);
+  // Create a dark, dramatic gradient (V3 style)
+  const topColor = `rgba(${topR}, ${topG}, ${topB}, 0.95)`;
+  const midColor = `rgba(${r}, ${g + 10}, ${b + 20}, 0.85)`;
+  const bottomColor = "transparent";
   
-  return { top: topColor, bottom: bottomColor };
+  return { top: topColor, mid: midColor, bottom: bottomColor };
 }
 
 /**
- * Draw the sticker header gradient overlay.
+ * Draw the sticker header gradient overlay (V3 dark style).
  */
 export function drawStickerGradient(
   ctx: CanvasRenderingContext2D,
@@ -64,13 +67,13 @@ export function drawStickerGradient(
   height: number,
   theme: ResolvedTheme,
 ): void {
-  const labelHeight = height * 0.28;
-  const { top, bottom } = deriveGradientFromTheme(theme);
+  const labelHeight = height * 0.32;
+  const { top, mid, bottom } = deriveGradientFromTheme(theme);
   
   const gradient = ctx.createLinearGradient(0, 0, 0, labelHeight);
   gradient.addColorStop(0, top);
-  gradient.addColorStop(0.6, bottom);
-  gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+  gradient.addColorStop(0.5, mid);
+  gradient.addColorStop(1, bottom);
   
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, width, labelHeight);
@@ -89,7 +92,16 @@ export function drawStickerOverlay(
   cityName: string,
   fontFamily?: string,
 ): void {
-  const textColor = theme.ui?.text || "#1a1a2e";
+  // Use light text for dark header (V3 style)
+  // Check if theme bg is dark - if so use theme text, otherwise use light color
+  const bgColor = theme.ui?.bg || "#1a1a2e";
+  const { r, g, b } = hexToRgb(bgColor);
+  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  
+  // For dark backgrounds, use light text; for light backgrounds, use the theme's adjusted text
+  const textColor = luminance < 0.5 
+    ? "#e8e0d8"  // Light cream for dark headers
+    : lightenColor(theme.ui?.text || "#1a1a2e", -0.3);  // Darken for light headers
 
   // Typography settings (vintage sticker style)
   const cityFontFamily = fontFamily

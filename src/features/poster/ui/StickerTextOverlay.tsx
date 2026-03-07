@@ -48,13 +48,17 @@ export default function StickerTextOverlay({
     ? `"${fontFamily}", "Raleway", "Helvetica Neue", sans-serif`
     : '"Raleway", "Helvetica Neue", sans-serif';
 
-  // Derive gradient colors from theme
-  const topColor = lightenColor(bgColor, 0.6);
-  const { r, g, b } = hexToRgb(accentColor);
-  const bottomColor = `rgba(${r}, ${g}, ${b}, 0.3)`;
+  // Derive dark gradient colors from theme (V3 style)
+  const { r, g, b } = hexToRgb(bgColor);
+  const topR = Math.min(255, r + 10);
+  const topG = Math.min(255, g + 20);
+  const topB = Math.min(255, b + 30);
+  
+  const topColor = `rgba(${topR}, ${topG}, ${topB}, 0.95)`;
+  const midColor = `rgba(${r}, ${g + 10}, ${b + 20}, 0.85)`;
   
   const gradientStyle = {
-    background: `linear-gradient(to bottom, ${topColor} 0%, ${bottomColor} 60%, transparent 100%)`,
+    background: `linear-gradient(to bottom, ${topColor} 0%, ${midColor} 50%, transparent 100%)`,
   };
 
   return (
