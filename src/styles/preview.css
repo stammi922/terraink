@@ -44,17 +44,16 @@
     0 8px 14px rgba(0, 0, 0, 0.42);
 }
 
-/* ── Shield/Sticker shape for preview ── */
+/* ── Shield/Sticker shape for preview (rounded corners) ── */
 
 .poster-frame.shield-shape {
   border-radius: 0;
   border: none;
-  clip-path: polygon(
-    3% 0%, 97% 0%,
-    100% 4%, 100% 65%,
-    50% 100%,
-    0% 65%, 0% 4%
-  );
+  /* Use inline SVG mask for scalable rounded shield shape */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 6 0 L 94 0 Q 100 0, 100 6 L 100 65 Q 100 92, 50 100 Q 0 92, 0 65 L 0 6 Q 0 0, 6 0 Z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 6 0 L 94 0 Q 100 0, 100 6 L 100 65 Q 100 92, 50 100 Q 0 92, 0 65 L 0 6 Q 0 0, 6 0 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }
 
 .poster-frame.shield-shape::after {
@@ -62,13 +61,12 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  clip-path: polygon(
-    3% 0%, 97% 0%,
-    100% 4%, 100% 65%,
-    50% 100%,
-    0% 65%, 0% 4%
-  );
-  box-shadow: inset 0 0 0 2px rgba(74, 60, 49, 0.6);
+  /* Use same SVG mask for border overlay */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 6 0 L 94 0 Q 100 0, 100 6 L 100 65 Q 100 92, 50 100 Q 0 92, 0 65 L 0 6 Q 0 0, 6 0 Z' fill='none' stroke='black' stroke-width='3'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 6 0 L 94 0 Q 100 0, 100 6 L 100 65 Q 100 92, 50 100 Q 0 92, 0 65 L 0 6 Q 0 0, 6 0 Z' fill='none' stroke='black' stroke-width='3'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  background: rgba(74, 60, 49, 0.6);
 }
 
 /* ── MapLibre container ── */
