@@ -64,8 +64,8 @@ export async function compositeExport(
 
     ctx.restore();
 
-    // Draw sticker text overlay (city name + branding)
-    drawStickerOverlay(ctx, width, height, theme, displayCity, fontFamily);
+    // Draw sticker text overlay (city name + country + coordinates)
+    drawStickerOverlay(ctx, width, height, theme, displayCity, displayCountry, center, fontFamily);
 
     // Draw shield border (outside clip)
     ctx.strokeStyle = theme.ui?.text || "#4a3c31";

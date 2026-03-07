@@ -339,6 +339,8 @@ export default function PreviewPanel() {
           {form.exportShape === "shield" ? (
             <StickerTextOverlay
               city={cityLabel}
+              country={countryLabel}
+              center={{ lng: formLon, lat: formLat }}
               fontFamily={form.fontFamily}
               textColor={effectiveTheme.ui.text}
               bgColor={effectiveTheme.ui.bg}

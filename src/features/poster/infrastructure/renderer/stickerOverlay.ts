@@ -80,9 +80,20 @@ export function drawStickerGradient(
 }
 
 /**
+ * Format coordinates as degrees with direction (e.g., "47.3769° N / 8.5417° E").
+ */
+function formatCoords(center: { lng: number; lat: number }): string {
+  const latDir = center.lat >= 0 ? "N" : "S";
+  const lngDir = center.lng >= 0 ? "E" : "W";
+  const lat = Math.abs(center.lat).toFixed(4);
+  const lng = Math.abs(center.lng).toFixed(4);
+  return `${lat}° ${latDir} / ${lng}° ${lngDir}`;
+}
+
+/**
  * Draw sticker-specific text overlay (RIMOWA-style).
  *
- * Renders city name at top with "TerraInk" branding below.
+ * Renders city name at top with country and coordinates below.
  */
 export function drawStickerOverlay(
   ctx: CanvasRenderingContext2D,
@@ -90,6 +101,8 @@ export function drawStickerOverlay(
   height: number,
   theme: ResolvedTheme,
   cityName: string,
+  countryName: string,
+  center: { lng: number; lat: number },
   fontFamily?: string,
 ): void {
   // Use light text for dark header (V3 style)
@@ -107,22 +120,29 @@ export function drawStickerOverlay(
   const cityFontFamily = fontFamily
     ? `"${fontFamily}", "Playfair Display", serif`
     : '"Playfair Display", "Georgia", serif';
-  const brandingFontFamily = fontFamily
+  const subtitleFontFamily = fontFamily
     ? `"${fontFamily}", "Raleway", sans-serif`
     : '"Raleway", "Helvetica Neue", sans-serif';
+  const monoFontFamily = '"Spline Sans Mono", monospace';
 
   // City name - large, centered at top
-  const cityFontSize = height * 0.08;
+  const cityFontSize = height * 0.07;
   ctx.fillStyle = textColor;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.font = `600 ${cityFontSize}px ${cityFontFamily}`;
-  ctx.fillText(cityName.toUpperCase(), width / 2, height * 0.12);
+  ctx.fillText(cityName.toUpperCase(), width / 2, height * 0.10);
 
-  // Branding subtitle
-  const brandingFontSize = cityFontSize * 0.35;
-  ctx.font = `400 ${brandingFontSize}px ${brandingFontFamily}`;
-  ctx.globalAlpha = 0.85;
-  ctx.fillText("TerraInk", width / 2, height * 0.18);
+  // Country name - smaller, below city
+  const countryFontSize = cityFontSize * 0.38;
+  ctx.font = `300 ${countryFontSize}px ${subtitleFontFamily}`;
+  ctx.globalAlpha = 0.9;
+  ctx.fillText(countryName.toUpperCase(), width / 2, height * 0.155);
+
+  // Coordinates - monospace, below country
+  const coordsFontSize = cityFontSize * 0.28;
+  ctx.font = `400 ${coordsFontSize}px ${monoFontFamily}`;
+  ctx.globalAlpha = 0.75;
+  ctx.fillText(formatCoords(center), width / 2, height * 0.195);
   ctx.globalAlpha = 1;
 }

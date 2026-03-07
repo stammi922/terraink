@@ -229,13 +229,40 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 12%;
+  top: 10%;
   margin: 0;
   font-weight: 600;
-  font-size: 8cqh;
+  font-size: 7cqh;
   text-align: center;
   text-transform: uppercase;
   line-height: 1.1;
+  transform: translateY(-50%);
+}
+
+.sticker-country {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 15.5%;
+  margin: 0;
+  font-weight: 300;
+  font-size: 2.6cqh;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 0.9;
+  transform: translateY(-50%);
+}
+
+.sticker-coords {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 19.5%;
+  margin: 0;
+  font-weight: 400;
+  font-size: 1.9cqh;
+  text-align: center;
+  opacity: 0.75;
   transform: translateY(-50%);
 }
 

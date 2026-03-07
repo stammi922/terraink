@@ -1,5 +1,7 @@
 interface StickerTextOverlayProps {
   city: string;
+  country: string;
+  center: { lng: number; lat: number };
   fontFamily: string;
   textColor: string;
   bgColor: string;
@@ -31,11 +33,24 @@ function lightenColor(hex: string, amount: number): string {
 }
 
 /**
+ * Format coordinates as degrees with direction.
+ */
+function formatCoords(center: { lng: number; lat: number }): string {
+  const latDir = center.lat >= 0 ? "N" : "S";
+  const lngDir = center.lng >= 0 ? "E" : "W";
+  const lat = Math.abs(center.lat).toFixed(4);
+  const lng = Math.abs(center.lng).toFixed(4);
+  return `${lat}° ${latDir} / ${lng}° ${lngDir}`;
+}
+
+/**
  * DOM-based sticker text overlay for shield/RIMOWA-style format.
- * Renders city name with gradient background and TerraInk branding.
+ * Renders city name with country and coordinates below.
  */
 export default function StickerTextOverlay({
   city,
+  country,
+  center,
   fontFamily,
   textColor,
   bgColor,
@@ -44,9 +59,10 @@ export default function StickerTextOverlay({
   const titleFont = fontFamily
     ? `"${fontFamily}", "Playfair Display", "Georgia", serif`
     : '"Playfair Display", "Georgia", serif';
-  const brandingFont = fontFamily
+  const subtitleFont = fontFamily
     ? `"${fontFamily}", "Raleway", "Helvetica Neue", sans-serif`
     : '"Raleway", "Helvetica Neue", sans-serif';
+  const monoFont = '"Spline Sans Mono", monospace';
 
   // Derive dark gradient colors from theme (V3 style)
   const { r, g, b } = hexToRgb(bgColor);
@@ -77,15 +93,26 @@ export default function StickerTextOverlay({
         {city.toUpperCase()}
       </p>
 
-      {/* Branding */}
+      {/* Country name */}
       <p
-        className="sticker-branding"
+        className="sticker-country"
         style={{
-          fontFamily: brandingFont,
+          fontFamily: subtitleFont,
           color: textColor,
         }}
       >
-        TerraInk
+        {country.toUpperCase()}
+      </p>
+
+      {/* Coordinates */}
+      <p
+        className="sticker-coords"
+        style={{
+          fontFamily: monoFont,
+          color: textColor,
+        }}
+      >
+        {formatCoords(center)}
       </p>
     </div>
   );
