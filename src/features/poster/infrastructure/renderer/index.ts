@@ -1,6 +1,6 @@
 import { applyFades } from "./layers";
 import { drawPosterText } from "./typography";
-import { drawStickerOverlay } from "./stickerOverlay";
+import { drawStickerOverlay, drawStickerGradient } from "./stickerOverlay";
 import { drawMarkersOnCanvas } from "@/features/markers/infrastructure/rendering";
 import { createShieldPath } from "@/features/export/infrastructure/shapes";
 import type { ExportOptions, CanvasSize } from "../../domain/types";
@@ -59,13 +59,8 @@ export async function compositeExport(
     // Draw map snapshot (clipped to shield)
     ctx.drawImage(mapCanvas, 0, 0);
 
-    // Draw gradient overlay in label zone (top 25%)
-    const labelHeight = height * 0.25;
-    const gradient = ctx.createLinearGradient(0, 0, 0, labelHeight);
-    gradient.addColorStop(0, "rgba(255, 182, 193, 0.85)"); // Soft pink
-    gradient.addColorStop(1, "rgba(135, 206, 235, 0.6)"); // Sky blue
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, width, labelHeight);
+    // Draw theme-aware gradient overlay in label zone
+    drawStickerGradient(ctx, width, height, theme);
 
     ctx.restore();
 

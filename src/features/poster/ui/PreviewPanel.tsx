@@ -341,6 +341,8 @@ export default function PreviewPanel() {
               city={cityLabel}
               fontFamily={form.fontFamily}
               textColor={effectiveTheme.ui.text}
+              bgColor={effectiveTheme.ui.bg}
+              accentColor={effectiveTheme.map?.water || effectiveTheme.ui.bg}
             />
           ) : (
             <PosterTextOverlay

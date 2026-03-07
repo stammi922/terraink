@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TerraInk Sticker Design Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1a1a2e;
+      padding: 40px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .sticker-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .sticker-label {
+      color: #888;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* The sticker itself */
+    .sticker {
+      position: relative;
+      width: 280px;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    /* Shield shape using clip-path */
+    .sticker-inner {
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(
+        /* Top edge - slightly rounded corners */
+        4% 0%, 96% 0%,
+        /* Right side down */
+        100% 3%, 100% 65%,
+        /* Bottom curve to point */
+        85% 85%, 50% 100%, 15% 85%,
+        /* Left side up */
+        0% 65%, 0% 3%
+      );
+      background: #1e3a5f;
+    }
+
+    /* Map placeholder */
+    .sticker-map {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, 
+        #1e3a5f 0%,
+        #0d1f33 100%
+      );
+      /* This would be the actual map */
+    }
+
+    /* Fake map content for prototype */
+    .sticker-map::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        /* Water */
+        linear-gradient(180deg, transparent 40%, rgba(30, 80, 130, 0.6) 60%),
+        /* Roads pattern */
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 20px,
+          rgba(200, 170, 100, 0.15) 20px,
+          rgba(200, 170, 100, 0.15) 21px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 30px,
+          rgba(200, 170, 100, 0.1) 30px,
+          rgba(200, 170, 100, 0.1) 31px
+        );
+    }
+
+    /* Top label zone with gradient */
+    .sticker-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 28%;
+      background: linear-gradient(180deg,
+        rgba(245, 200, 180, 0.95) 0%,
+        rgba(200, 180, 200, 0.85) 40%,
+        rgba(150, 180, 210, 0.7) 70%,
+        transparent 100%
+      );
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 24px;
+    }
+
+    /* City name */
+    .city-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 32px;
+      color: #3a4a5a;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.3);
+    }
+
+    /* Branding */
+    .branding {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      color: #5a6a7a;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* Mountain silhouette at top */
+    .mountain-silhouette {
+      position: absolute;
+      top: -2px;
+      left: 4%;
+      right: 4%;
+      height: 20px;
+      pointer-events: none;
+    }
+
+    .mountain-silhouette svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Border */
+    .sticker-border {
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(
+        4% 0%, 96% 0%,
+        100% 3%, 100% 65%,
+        85% 85%, 50% 100%, 15% 85%,
+        0% 65%, 0% 3%
+      );
+      border: 2px solid rgba(60, 50, 40, 0.6);
+      pointer-events: none;
+    }
+
+    /* Alternative: SVG-based border for better control */
+    .sticker-svg-border {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    /* Version 2: More refined RIMOWA style */
+    .sticker.v2 .sticker-inner {
+      clip-path: path('M 14 0 L 266 0 Q 280 0 280 14 L 280 260 Q 280 340 140 400 Q 0 340 0 260 L 0 14 Q 0 0 14 0');
+    }
+
+    .sticker.v2 .sticker-header {
+      background: linear-gradient(180deg,
+        rgba(255, 220, 200, 0.92) 0%,
+        rgba(230, 200, 210, 0.85) 30%,
+        rgba(180, 200, 230, 0.75) 60%,
+        rgba(100, 150, 200, 0.3) 85%,
+        transparent 100%
+      );
+      height: 32%;
+      padding-top: 28px;
+    }
+
+    .sticker.v2 .city-name {
+      font-size: 28px;
+      font-weight: 600;
+      color: #4a5a6a;
+      letter-spacing: 6px;
+    }
+
+    .sticker.v2 .branding {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: #6a7a8a;
+      margin-top: 8px;
+    }
+
+    /* Version 3: Darker, more dramatic */
+    .sticker.v3 .sticker-header {
+      background: linear-gradient(180deg,
+        rgba(40, 50, 70, 0.95) 0%,
+        rgba(30, 50, 80, 0.85) 50%,
+        transparent 100%
+      );
+      height: 30%;
+    }
+
+    .sticker.v3 .city-name {
+      color: #e8e0d8;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .sticker.v3 .branding {
+      color: #a0a8b0;
+    }
+
+    /* Debug grid */
+    .debug-grid {
+      position: absolute;
+      inset: 0;
+      background: 
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,0,0,0.1) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,0,0,0.1) 40px);
+      pointer-events: none;
+      display: none;
+    }
+
+    /* Reference comparison */
+    .reference {
+      width: 280px;
+      height: 400px;
+      border: 1px dashed #444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    h2 {
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      margin-bottom: 20px;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>TerraInk Sticker Design Prototypes</h2>
+
+  <!-- Version 1: Basic -->
+  <div class="sticker-container">
+    <div class="sticker v1">
+      <div class="sticker-inner">
+        <div class="sticker-map"></div>
+        <div class="sticker-header">
+          <span class="city-name">Zürich</span>
+          <span class="branding">TerraInk</span>
+        </div>
+      </div>
+      <div class="debug-grid"></div>
+    </div>
+    <span class="sticker-label">V1: Soft Gradient</span>
+  </div>
+
+  <!-- Version 2: Refined -->
+  <div class="sticker-container">
+    <div class="sticker v2">
+      <div class="sticker-inner">
+        <div class="sticker-map"></div>
+        <div class="sticker-header">
+          <span class="city-name">Zürich</span>
+          <span class="branding">TerraInk</span>
+        </div>
+      </div>
+    </div>
+    <span class="sticker-label">V2: RIMOWA Style</span>
+  </div>
+
+  <!-- Version 3: Dark Mode -->
+  <div class="sticker-container">
+    <div class="sticker v3">
+      <div class="sticker-inner">
+        <div class="sticker-map"></div>
+        <div class="sticker-header">
+          <span class="city-name">Zürich</span>
+          <span class="branding">TerraInk</span>
+        </div>
+      </div>
+    </div>
+    <span class="sticker-label">V3: Dark Header</span>
+  </div>
+
+  <!-- SVG Shield Definition for better rendering -->
+  <svg width="0" height="0" style="position: absolute;">
+    <defs>
+      <clipPath id="shield-clip" clipPathUnits="objectBoundingBox">
+        <path d="M 0.05 0 
+                 L 0.95 0 
+                 Q 1 0 1 0.035 
+                 L 1 0.65 
+                 Q 1 0.85 0.5 1 
+                 Q 0 0.85 0 0.65 
+                 L 0 0.035 
+                 Q 0 0 0.05 0 
+                 Z" />
+      </clipPath>
+    </defs>
+  </svg>
+
+</body>
+</html>
