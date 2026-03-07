@@ -38,3 +38,4 @@ Thumbs.db
 
 # Local updates announcement file for development
 updates.json
+.vercel
