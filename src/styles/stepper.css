@@ -1,0 +1,91 @@
+/* ── Step Indicator ── */
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgba(10, 20, 31, 0.55);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+
+.step-indicator__step {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  opacity: 0.38;
+  transition: opacity 0.25s ease;
+  flex-shrink: 0;
+}
+
+.step-indicator__step.is-active {
+  opacity: 1;
+}
+
+.step-indicator__step.is-done {
+  opacity: 0.65;
+}
+
+.step-indicator__number {
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(146, 176, 200, 0.6);
+  line-height: 1;
+}
+
+.step-indicator__step.is-active .step-indicator__number {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.step-indicator__step.is-done .step-indicator__number {
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+.step-indicator__label {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #9ab8cc;
+  letter-spacing: 0.015em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.step-indicator__step.is-active .step-indicator__label {
+  color: #ecf5ff;
+}
+
+.step-indicator__step.is-done .step-indicator__label {
+  color: #c3d4e2;
+}
+
+.step-indicator__arrow {
+  margin: 0 10px;
+  color: rgba(146, 176, 200, 0.25);
+  font-size: 0.72rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+@media (max-width: 760px) {
+  .step-indicator {
+    padding: 8px 12px;
+    gap: 2px;
+  }
+
+  .step-indicator__label {
+    font-size: 0.72rem;
+  }
+
+  .step-indicator__arrow {
+    margin: 0 6px;
+  }
+}

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@1&family=Spline+Sans+Mono:wght@400;500&display=swap");
 
 :root {
   --ink: #e6edf4;
@@ -7,6 +7,16 @@
   --strong-line: rgba(166, 199, 223, 0.45);
   --positive: #6bd8a0;
   --negative: #ff8372;
+
+  /* ── Amber accent system ── */
+  --accent: #f59e0b;
+  --accent-muted: rgba(245, 158, 11, 0.18);
+  --accent-glow: rgba(245, 158, 11, 0.32);
+  --accent-border: rgba(245, 158, 11, 0.52);
+  --accent-border-hover: rgba(245, 158, 11, 0.85);
+
+  /* ── Paper white for poster frame ── */
+  --paper-white: #f8f5ef;
 }
 
 *,

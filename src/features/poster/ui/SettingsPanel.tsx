@@ -317,7 +317,7 @@ export default function SettingsPanel() {
 
       {!isAuxEditorActive && (
         <div className="action-row">
-          <p className="export-map-label">Export Map</p>
+          <p className="export-map-label">Download Your Poster</p>
           <div className="export-shape-toggle">
             <button
               type="button"

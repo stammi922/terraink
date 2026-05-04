@@ -39,14 +39,32 @@
   opacity: 0.74;
 }
 
-.app-header h1 {
-  margin: 6px 0 6px;
+/* ── Hero headline ── */
+
+.hero-headline {
+  margin: 6px 0 2px;
+  display: block;
   font-family: "Bebas Neue", sans-serif;
-  font-size: clamp(2.35rem, 6.2vw, 4.7rem);
-  line-height: 0.9;
+  font-size: clamp(2.35rem, 6.5vw, 5rem);
+  line-height: 0.88;
   letter-spacing: 0.03em;
   color: #ecf5ff;
-  text-shadow: 0 12px 26px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.42);
+}
+
+.hero-headline__top {
+  display: block;
+}
+
+.hero-headline__word {
+  display: block;
+  font-family: "Instrument Serif", "Georgia", serif;
+  font-style: italic;
+  color: var(--accent);
+  font-size: clamp(2.6rem, 7.2vw, 5.6rem);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-shadow: 0 0 32px var(--accent-glow), 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .app-copy {
@@ -170,18 +188,18 @@ button.install-prompt-btn {
   margin: 0;
   padding: 7px 14px;
   border-radius: 999px;
-  border: 1px solid rgba(94, 174, 212, 0.6);
+  border: 1px solid var(--accent-border);
   background: linear-gradient(
     135deg,
-    rgba(38, 112, 158, 0.95) 0%,
-    rgba(25, 78, 115, 0.95) 100%
+    rgba(213, 133, 10, 0.95) 0%,
+    rgba(180, 110, 8, 0.95) 100%
   );
-  color: #dff3ff;
+  color: #fff8ec;
   font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
-  box-shadow: 0 0 10px rgba(94, 174, 212, 0.22);
+  box-shadow: 0 0 10px var(--accent-muted);
   transition:
     border-color 0.15s ease,
     box-shadow 0.15s ease;
@@ -190,8 +208,8 @@ button.install-prompt-btn {
 button.install-prompt-btn:hover {
   transform: none;
   filter: none;
-  border-color: rgba(130, 200, 240, 0.85);
-  box-shadow: 0 0 18px rgba(94, 174, 212, 0.4);
+  border-color: var(--accent-border-hover);
+  box-shadow: 0 0 18px var(--accent-glow);
 }
 
 button.install-prompt-dismiss {

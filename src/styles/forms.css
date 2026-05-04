@@ -8,7 +8,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 0.76rem;
-  color: #88b7d5;
+  color: rgba(245, 158, 11, 0.72);
 }
 
 label {
@@ -112,8 +112,8 @@ label {
   height: 20px;
   margin-top: -5px;
   border-radius: 999px;
-  border: 2px solid #e8f3fb;
-  background: radial-gradient(circle at 35% 35%, #4ca9cd, #2a7fa0 70%);
+  border: 2px solid rgba(255, 235, 180, 0.85);
+  background: radial-gradient(circle at 35% 35%, #f5c842, #d4850a 70%);
   box-shadow:
     0 0 0 2px rgba(5, 13, 20, 0.45),
     0 2px 6px rgba(0, 0, 0, 0.35);
@@ -137,8 +137,8 @@ label {
   width: 20px;
   height: 20px;
   border-radius: 999px;
-  border: 2px solid #e8f3fb;
-  background: radial-gradient(circle at 35% 35%, #4ca9cd, #2a7fa0 70%);
+  border: 2px solid rgba(255, 235, 180, 0.85);
+  background: radial-gradient(circle at 35% 35%, #f5c842, #d4850a 70%);
   box-shadow:
     0 0 0 2px rgba(5, 13, 20, 0.45),
     0 2px 6px rgba(0, 0, 0, 0.35);
@@ -238,7 +238,7 @@ label {
 .map-details-collapsible:focus-visible {
   transform: none;
   filter: none;
-  border-color: rgba(112, 184, 222, 0.74);
+  border-color: var(--accent-border);
   background: rgba(22, 44, 61, 0.9);
 }
 
@@ -297,7 +297,7 @@ label {
 }
 
 .theme-switch input:checked + .theme-switch-track {
-  background: #5eaed4;
+  background: var(--accent);
 }
 
 .theme-switch input:checked + .theme-switch-track::after {
@@ -305,7 +305,7 @@ label {
 }
 
 .theme-switch input:focus-visible + .theme-switch-track {
-  box-shadow: 0 0 0 3px rgba(75, 149, 186, 0.3);
+  box-shadow: 0 0 0 3px var(--accent-muted);
 }
 
 .credits-toggle-field {
@@ -376,19 +376,19 @@ label {
   align-items: center;
   padding: 10px 20px;
   border-radius: 999px;
-  border: 1px solid rgba(94, 174, 212, 0.55);
+  border: 1px solid var(--accent-border);
   background: linear-gradient(
     135deg,
-    rgba(38, 112, 158, 0.95) 0%,
-    rgba(25, 78, 115, 0.95) 100%
+    rgba(213, 133, 10, 0.95) 0%,
+    rgba(180, 110, 8, 0.95) 100%
   );
-  color: #dff3ff;
+  color: #fff8ec;
   text-decoration: none;
   font-size: 0.84rem;
   font-weight: 700;
   cursor: pointer;
   box-shadow:
-    0 0 14px rgba(94, 174, 212, 0.28),
+    0 0 14px var(--accent-muted),
     0 2px 6px rgba(0, 0, 0, 0.35);
   transition:
     border-color 0.15s ease,
@@ -401,16 +401,16 @@ label {
 .credits-modal-keep:focus-visible {
   transform: none;
   filter: none;
-  border-color: rgba(130, 200, 240, 0.85);
+  border-color: var(--accent-border-hover);
   background: linear-gradient(
     135deg,
-    rgba(50, 138, 190, 0.98) 0%,
-    rgba(35, 100, 148, 0.98) 100%
+    rgba(213, 133, 10, 1) 0%,
+    rgba(180, 110, 8, 1) 100%
   );
   box-shadow:
-    0 0 22px rgba(94, 174, 212, 0.45),
+    0 0 22px var(--accent-glow),
     0 2px 8px rgba(0, 0, 0, 0.4);
-  color: #f0faff;
+  color: #fff;
 }
 
 .credits-modal-remove {
@@ -459,8 +459,8 @@ input::placeholder {
 
 input:not([type="checkbox"]):not([type="radio"]):focus,
 select:focus {
-  border-color: rgba(102, 174, 209, 0.82);
-  box-shadow: 0 0 0 3px rgba(75, 149, 186, 0.24);
+  border-color: rgba(245, 158, 11, 0.75);
+  box-shadow: 0 0 0 3px var(--accent-muted);
 }
 
 .location-autocomplete {
@@ -555,7 +555,7 @@ button.location-current-btn:focus-visible {
 
 .location-suggestion:hover,
 .location-suggestion:focus-visible {
-  background: rgba(69, 133, 169, 0.2);
+  background: var(--accent-muted);
 }
 
 .location-suggestion:not(:disabled):hover {
@@ -733,15 +733,15 @@ button.color-editor-target {
 }
 
 button.color-editor-target.is-active {
-  border-color: rgba(112, 184, 222, 0.82);
-  box-shadow: 0 0 0 2px rgba(75, 149, 186, 0.24);
+  border-color: var(--accent-border-hover);
+  box-shadow: 0 0 0 2px var(--accent-muted);
 }
 
 button.color-editor-target:not(:disabled):hover,
 button.color-editor-target:focus-visible {
   transform: none;
   filter: none;
-  border-color: rgba(112, 184, 222, 0.82);
+  border-color: var(--accent-border);
   background: rgba(20, 38, 52, 0.94);
 }
 
@@ -777,15 +777,15 @@ button.theme-card {
 }
 
 button.theme-card.is-selected {
-  border-color: rgba(112, 184, 222, 0.8);
-  box-shadow: 0 0 0 2px rgba(75, 149, 186, 0.22);
+  border-color: var(--accent-border-hover);
+  box-shadow: 0 0 0 2px var(--accent-muted);
 }
 
 button.theme-card:not(:disabled):hover,
 button.theme-card:focus-visible {
   transform: none;
   filter: none;
-  border-color: rgba(112, 184, 222, 0.78);
+  border-color: var(--accent-border);
   background: rgba(20, 38, 52, 0.94);
 }
 
@@ -829,15 +829,15 @@ button.theme-card:focus-visible {
 }
 
 .layout-card.is-selected {
-  border-color: rgba(112, 184, 222, 0.8);
-  box-shadow: 0 0 0 2px rgba(75, 149, 186, 0.22);
+  border-color: var(--accent-border-hover);
+  box-shadow: 0 0 0 2px var(--accent-muted);
 }
 
 .layout-card:not(:disabled):hover,
 .layout-card:focus-visible {
   transform: none;
   filter: none;
-  border-color: rgba(112, 184, 222, 0.78);
+  border-color: var(--accent-border);
   background: rgba(20, 38, 52, 0.94);
 }
 
@@ -1021,15 +1021,15 @@ button.palette-color-item {
 }
 
 button.palette-color-item.is-active {
-  border-color: rgba(112, 184, 222, 0.8);
-  box-shadow: 0 0 0 2px rgba(75, 149, 186, 0.22);
+  border-color: var(--accent-border-hover);
+  box-shadow: 0 0 0 2px var(--accent-muted);
 }
 
 button.palette-color-item:not(:disabled):hover,
 button.palette-color-item:focus-visible {
   transform: none;
   filter: none;
-  border-color: rgba(112, 184, 222, 0.78);
+  border-color: var(--accent-border);
   background: rgba(20, 38, 52, 0.94);
 }
 
@@ -1119,16 +1119,16 @@ button.color-grid-action {
 }
 
 button.color-grid-action.is-active {
-  border-color: rgba(112, 184, 222, 0.82);
-  background: rgba(45, 78, 102, 0.98);
+  border-color: var(--accent-border-hover);
+  background: rgba(74, 48, 8, 0.98);
 }
 
 button.color-grid-action:not(:disabled):hover,
 button.color-grid-action:focus-visible {
   transform: none;
   filter: none;
-  border-color: rgba(112, 184, 222, 0.82);
-  background: rgba(45, 78, 102, 0.98);
+  border-color: var(--accent-border);
+  background: rgba(55, 35, 5, 0.98);
 }
 
 button.color-grid-reset {
@@ -1427,8 +1427,8 @@ button.marker-settings-card__reset-btn {
 }
 
 .marker-settings-toggle-btn.is-active {
-  border-color: rgba(112, 184, 222, 0.82);
-  background: rgba(42, 72, 93, 0.95);
+  border-color: var(--accent-border-hover);
+  background: rgba(74, 48, 8, 0.95);
 }
 
 .marker-settings-toggle-hint {
@@ -1561,8 +1561,8 @@ button.marker-row__icon-btn--danger {
   height: 22px;
   margin-top: -6px;
   border-radius: 999px;
-  border: 2px solid #e8f3fb;
-  background: radial-gradient(circle at 35% 35%, #4ca9cd, #2a7fa0 70%);
+  border: 2px solid rgba(255, 235, 180, 0.85);
+  background: radial-gradient(circle at 35% 35%, #f5c842, #d4850a 70%);
   box-shadow:
     0 0 0 2px rgba(5, 13, 20, 0.45),
     0 2px 6px rgba(0, 0, 0, 0.35);
@@ -1585,8 +1585,8 @@ button.marker-row__icon-btn--danger {
   width: 22px;
   height: 22px;
   border-radius: 999px;
-  border: 2px solid #e8f3fb;
-  background: radial-gradient(circle at 35% 35%, #4ca9cd, #2a7fa0 70%);
+  border: 2px solid rgba(255, 235, 180, 0.85);
+  background: radial-gradient(circle at 35% 35%, #f5c842, #d4850a 70%);
   box-shadow:
     0 0 0 2px rgba(5, 13, 20, 0.45),
     0 2px 6px rgba(0, 0, 0, 0.35);
@@ -1746,15 +1746,15 @@ button.marker-picker__option--upload-tile {
 }
 
 button.marker-picker__option.is-selected {
-  border-color: rgba(112, 184, 222, 0.82);
-  box-shadow: 0 0 0 2px rgba(75, 149, 186, 0.22);
+  border-color: var(--accent-border-hover);
+  box-shadow: 0 0 0 2px var(--accent-muted);
 }
 
 button.marker-picker__option:not(:disabled):hover,
 button.marker-picker__option:focus-visible {
   transform: none;
   filter: none;
-  border-color: rgba(112, 184, 222, 0.8);
+  border-color: var(--accent-border);
   background: rgba(22, 42, 58, 0.96);
 }
 
@@ -1903,16 +1903,19 @@ button.marker-picker__clear-uploaded {
 .action-row {
   display: grid;
   gap: 8px;
-  margin-top: 10px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--accent-muted);
 }
 
 .export-map-label {
   margin: 0;
-  font-family: "Spline Sans Mono", monospace;
+  font-family: "Bebas Neue", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
-  font-size: 0.72rem;
-  color: #7de4a6;
+  letter-spacing: 0.1em;
+  font-size: 1.05rem;
+  color: var(--accent);
+  text-shadow: 0 0 12px var(--accent-glow);
 }
 
 .export-shape-toggle {
@@ -1949,9 +1952,9 @@ button.marker-picker__clear-uploaded {
 }
 
 .shape-toggle-btn.active {
-  background: rgba(55, 171, 203, 0.28);
-  border-color: rgba(55, 171, 203, 0.7);
-  color: #d5e7f5;
+  background: var(--accent-muted);
+  border-color: var(--accent-border);
+  color: #fff8ec;
 }
 
 .action-row > button {
@@ -1977,23 +1980,46 @@ button.download-format-btn {
 }
 
 button.export-map-btn {
-  border: 1px solid rgba(120, 221, 161, 0.56);
+  border: 1px solid var(--accent-border);
   background: linear-gradient(
     135deg,
-    rgba(42, 126, 79, 0.96),
-    rgba(29, 103, 64, 0.96)
+    rgba(213, 133, 10, 0.96),
+    rgba(245, 158, 11, 0.96)
   );
-  color: #effff5;
+  color: #fff8ec;
 }
 
 button.export-map-btn:not(:disabled):hover,
 button.export-map-btn:focus-visible {
-  border-color: rgba(147, 235, 183, 0.88);
+  border-color: var(--accent-border-hover);
   background: linear-gradient(
     135deg,
-    rgba(50, 141, 89, 0.98),
-    rgba(34, 117, 73, 0.98)
+    rgba(213, 133, 10, 1),
+    rgba(245, 158, 11, 1)
   );
+}
+
+/* ── Generate / primary download button ── */
+
+button.generate-btn {
+  border: 1px solid var(--accent-border-hover);
+  background: linear-gradient(
+    135deg,
+    rgba(213, 133, 10, 0.96),
+    rgba(245, 158, 11, 0.96)
+  );
+  color: #fff8ec;
+}
+
+button.generate-btn:not(:disabled):hover,
+button.generate-btn:focus-visible {
+  border-color: var(--accent);
+  background: linear-gradient(
+    135deg,
+    rgba(213, 133, 10, 1),
+    rgba(245, 158, 11, 1)
+  );
+  box-shadow: 0 0 18px var(--accent-glow);
 }
 
 .download-btn-icon {
@@ -2050,8 +2076,8 @@ button:disabled {
 }
 
 button[type="submit"] {
-  background: linear-gradient(135deg, #1a6f8c, #2f8eaf);
-  color: #f4fbff;
+  background: linear-gradient(135deg, #d4850a, var(--accent));
+  color: #fff8ec;
 }
 
 button.location-clear-btn {

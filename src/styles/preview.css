@@ -4,16 +4,22 @@
   border-radius: 14px;
   border: 1px solid var(--strong-line);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 28%),
     radial-gradient(
       circle at 82% 16%,
-      rgba(77, 161, 201, 0.28),
+      rgba(245, 158, 11, 0.06),
       transparent 32%
     ),
-    linear-gradient(145deg, rgba(14, 33, 46, 0.96), rgba(11, 26, 38, 0.9));
+    radial-gradient(
+      circle at 18% 84%,
+      rgba(77, 161, 201, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(145deg, rgba(10, 20, 30, 0.98), rgba(8, 16, 24, 0.94));
   display: grid;
   place-items: center;
-  overflow: hidden;
+  overflow: visible;
+  padding: 24px;
 }
 
 .poster-viewport::before {
@@ -33,12 +39,25 @@
   position: relative;
   z-index: 1;
   aspect-ratio: var(--poster-aspect, 2 / 3);
-  width: min(100%, calc(82vh * var(--poster-aspect, 0.6666667)));
+  width: min(100%, calc(74vh * var(--poster-aspect, 0.6666667)));
   max-width: 100%;
-  max-height: 82vh;
+  max-height: 74vh;
   overflow: hidden;
-  border-radius: 4px;
-  border: 1px solid rgba(179, 210, 230, 0.28);
+  border-radius: 3px;
+  border: none;
+}
+
+/* White paper surround for poster (not sticker) */
+.poster-frame:not(.shield-shape) {
+  box-shadow:
+    0 0 0 14px var(--paper-white),
+    0 0 0 15px rgba(0, 0, 0, 0.10),
+    0 32px 64px rgba(0, 0, 0, 0.58),
+    0 10px 24px rgba(0, 0, 0, 0.42);
+}
+
+/* Sticker keeps original shadow (mask-image clips outer shadow anyway) */
+.poster-frame.shield-shape {
   box-shadow:
     0 24px 34px rgba(0, 0, 0, 0.5),
     0 8px 14px rgba(0, 0, 0, 0.42);
@@ -282,11 +301,20 @@
 @media (max-width: 980px) {
   .poster-viewport {
     min-height: 400px;
+    padding: 16px;
+  }
+
+  .poster-frame:not(.shield-shape) {
+    box-shadow:
+      0 0 0 10px var(--paper-white),
+      0 0 0 11px rgba(0, 0, 0, 0.10),
+      0 20px 44px rgba(0, 0, 0, 0.55),
+      0 6px 16px rgba(0, 0, 0, 0.38);
   }
 
   .poster-frame {
-    width: min(100%, calc(68vh * var(--poster-aspect, 0.6666667)));
-    max-height: 68vh;
+    width: min(100%, calc(62vh * var(--poster-aspect, 0.6666667)));
+    max-height: 62vh;
   }
 }
 
@@ -328,10 +356,10 @@
   appearance: none;
   background: linear-gradient(
     90deg,
-    rgba(69, 140, 184, 0.75),
-    rgba(55, 171, 203, 0.95)
+    rgba(213, 133, 10, 0.65),
+    rgba(245, 158, 11, 0.9)
   );
-  border: 1px solid rgba(137, 176, 200, 0.35);
+  border: 1px solid rgba(245, 158, 11, 0.28);
   box-shadow: inset 0 0 0 1px rgba(8, 18, 28, 0.28);
 }
 
@@ -340,8 +368,8 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border: 1px solid rgba(206, 233, 250, 0.85);
-  background: #d5e7f5;
+  border: 1px solid rgba(255, 235, 180, 0.85);
+  background: radial-gradient(circle at 35% 35%, #f5c842, #d4850a 70%);
   box-shadow:
     0 0 0 2px rgba(11, 26, 38, 0.5),
     0 2px 6px rgba(0, 0, 0, 0.35);
@@ -352,8 +380,8 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border: 1px solid rgba(206, 233, 250, 0.85);
-  background: #d5e7f5;
+  border: 1px solid rgba(255, 235, 180, 0.85);
+  background: radial-gradient(circle at 35% 35%, #f5c842, #d4850a 70%);
   box-shadow:
     0 0 0 2px rgba(11, 26, 38, 0.5),
     0 2px 6px rgba(0, 0, 0, 0.35);
@@ -365,10 +393,10 @@
   border-radius: 999px;
   background: linear-gradient(
     90deg,
-    rgba(69, 140, 184, 0.75),
-    rgba(55, 171, 203, 0.95)
+    rgba(213, 133, 10, 0.65),
+    rgba(245, 158, 11, 0.9)
   );
-  border: 1px solid rgba(137, 176, 200, 0.35);
+  border: 1px solid rgba(245, 158, 11, 0.28);
 }
 
 .map-control-btn {
@@ -399,17 +427,17 @@
 }
 
 .map-control-btn--primary {
-  background: rgba(55, 171, 203, 0.22);
-  border-color: rgba(55, 171, 203, 0.55);
+  background: var(--accent-muted);
+  border-color: var(--accent-border);
 }
 
 .map-control-btn--primary:hover:not(:disabled) {
-  background: rgba(55, 171, 203, 0.38);
+  background: rgba(245, 158, 11, 0.3);
 }
 
 .map-control-btn.is-active {
-  background: rgba(55, 171, 203, 0.34);
-  border-color: rgba(55, 171, 203, 0.8);
+  background: rgba(245, 158, 11, 0.25);
+  border-color: var(--accent-border-hover);
 }
 
 .map-control-hint {
