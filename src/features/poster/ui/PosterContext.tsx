@@ -91,6 +91,7 @@ const INITIAL_STATE: PosterState = {
   isMarkerEditorActive: false,
   error: "",
   isExporting: false,
+  hasExported: false,
   isLocationFocused: false,
   selectedLocation: null,
   userLocation: null,

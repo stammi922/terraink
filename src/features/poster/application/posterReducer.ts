@@ -54,6 +54,7 @@ export interface PosterState {
   isMarkerEditorActive: boolean;
   error: string;
   isExporting: boolean;
+  hasExported: boolean;
   isLocationFocused: boolean;
   selectedLocation: SearchResult | null;
   userLocation: SearchResult | null;
@@ -233,7 +234,7 @@ export function posterReducer(
       return { ...state, error: "", isExporting: true };
 
     case "FINISH_EXPORT":
-      return { ...state, isExporting: false };
+      return { ...state, isExporting: false, hasExported: true };
 
     case "FAIL_EXPORT":
       return { ...state, error: action.error, isExporting: false };

@@ -513,7 +513,7 @@ button.location-current-btn:not(:disabled):hover,
 button.location-current-btn:focus-visible {
   transform: none;
   filter: none;
-  border-color: rgba(112, 184, 222, 0.8);
+  border-color: var(--accent-border);
   background: rgba(47, 79, 102, 0.95);
 }
 
@@ -636,7 +636,7 @@ button.theme-customize-btn:not(:disabled):hover,
 button.theme-customize-btn:focus-visible {
   transform: none;
   filter: none;
-  border-color: rgba(112, 184, 222, 0.8);
+  border-color: var(--accent-border);
   background: rgba(47, 79, 102, 0.95);
 }
 
@@ -677,7 +677,7 @@ button.theme-edit-done-btn:not(:disabled):hover,
 button.theme-edit-done-btn:focus-visible {
   transform: none;
   filter: none;
-  border-color: rgba(112, 184, 222, 0.82);
+  border-color: var(--accent-border);
   background: rgba(44, 78, 102, 0.98);
 }
 
@@ -946,6 +946,7 @@ button.picker-modal-close:not(:disabled):hover,
 button.picker-modal-close:focus-visible {
   transform: none;
   filter: none;
+  border-color: var(--accent-border);
   background: rgba(47, 79, 102, 0.95);
 }
 
@@ -996,6 +997,7 @@ button.picker-modal-done:not(:disabled):hover,
 button.picker-modal-done:focus-visible {
   transform: none;
   filter: none;
+  border-color: var(--accent-border);
   background: rgba(47, 79, 102, 0.95);
 }
 
@@ -1671,7 +1673,7 @@ button.marker-color-edit-btn:not(:disabled):hover,
 button.marker-color-edit-btn:focus-visible {
   transform: none;
   filter: none;
-  border-color: rgba(112, 184, 222, 0.82);
+  border-color: var(--accent-border);
   background: rgba(42, 72, 93, 0.95);
 }
 
@@ -1751,7 +1753,9 @@ button.marker-picker__option.is-selected {
 }
 
 button.marker-picker__option:not(:disabled):hover,
-button.marker-picker__option:focus-visible {
+button.marker-picker__option:focus-visible,
+button.marker-picker__option--upload-tile:not(:disabled):hover,
+button.marker-picker__option--upload-tile:focus-visible {
   transform: none;
   filter: none;
   border-color: var(--accent-border);

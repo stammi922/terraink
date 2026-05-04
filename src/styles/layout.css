@@ -79,7 +79,7 @@
   display: grid;
   gap: 14px;
   align-items: start;
-  grid-template-columns: minmax(340px, 410px) minmax(0, 1fr);
+  grid-template-columns: minmax(320px, 390px) minmax(0, 1fr);
   /* Place inspector under the preview panel on wide screens */
   grid-template-areas:
     "config preview"
@@ -101,10 +101,7 @@
 .settings-panel {
   grid-area: config;
   padding: 14px;
-  position: sticky;
-  top: 16px;
   overflow-y: auto;
-  position: static;
 }
 
 .preview-panel {
@@ -117,10 +114,6 @@
   display: grid;
   gap: 12px;
   grid-template-columns: 1fr;
-}
-
-.app-grid {
-  grid-template-columns: minmax(320px, 390px) minmax(0, 1fr);
 }
 
 @media (max-width: 980px) {

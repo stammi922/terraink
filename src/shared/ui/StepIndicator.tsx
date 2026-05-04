@@ -17,7 +17,7 @@ export default function StepIndicator() {
   const { state } = usePosterContext();
   const hasLocation = Boolean(state.form.location?.trim());
   // 0-based index of the currently active step
-  const activeIndex = hasLocation ? 1 : 0;
+  const activeIndex = state.hasExported ? 2 : hasLocation ? 1 : 0;
 
   return (
     <nav className="step-indicator" aria-label="Workflow steps">
